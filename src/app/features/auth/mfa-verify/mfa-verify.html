@@ -1,0 +1,31 @@
+<app-card>
+  <h1>Verify it's you</h1>
+  <p class="muted">Enter the 6-digit verification code to finish signing in.</p>
+
+  @if (submitted()) {
+    <app-alert variant="info">The code format is valid. Verification is not connected yet.</app-alert>
+  }
+
+  <form [formGroup]="form" (ngSubmit)="submit()" novalidate>
+    <app-form-field
+      fieldId="mfa-code"
+      label="Verification code"
+      inputMode="numeric"
+      autocomplete="one-time-code"
+      placeholder="123456"
+      [maxLength]="6"
+      [control]="form.controls.code"
+      [errorMessages]="{
+        required: 'Enter the verification code.',
+        pattern: 'The code must be exactly 6 digits.',
+      }"
+    />
+
+    <app-button type="submit">Verify</app-button>
+  </form>
+
+  <div class="actions">
+    <button class="link" type="button" (click)="resend()">Resend code</button>
+    <a routerLink="/login">Back to sign in</a>
+  </div>
+</app-card>

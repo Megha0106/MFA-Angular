@@ -1,0 +1,72 @@
+<app-card>
+  <h1>Create your account</h1>
+  <p class="muted">Register to access your customer portal.</p>
+
+  @if (submitted()) {
+    <app-alert variant="info">
+      The form is valid. Account creation is not connected yet.
+    </app-alert>
+  }
+
+  <form [formGroup]="form" (ngSubmit)="submit()" novalidate>
+    <app-form-field
+      fieldId="register-name"
+      label="Full name"
+      autocomplete="name"
+      [control]="form.controls.name"
+      [errorMessages]="{ required: 'Enter your name.' }"
+    />
+    <app-form-field
+      fieldId="register-email"
+      label="Email"
+      type="email"
+      inputMode="email"
+      autocomplete="email"
+      [control]="form.controls.email"
+      [errorMessages]="{ required: 'Enter your email address.' }"
+    />
+    <app-form-field
+      fieldId="register-password"
+      label="Password"
+      type="password"
+      autocomplete="new-password"
+      hint="At least 8 characters with upper and lower case letters and a number."
+      [control]="form.controls.password"
+      [errorMessages]="{
+        required: 'Enter a password.',
+        minlength: 'Use at least 8 characters.',
+      }"
+    />
+    <app-form-field
+      fieldId="register-confirm"
+      label="Confirm password"
+      type="password"
+      autocomplete="new-password"
+      [control]="form.controls.confirmPassword"
+      [errorMessages]="{
+        required: 'Re-enter your password.',
+        mismatch: 'Passwords do not match.',
+      }"
+    />
+
+    <div class="terms">
+      <label class="terms__label">
+        <input
+          type="checkbox"
+          [formControl]="form.controls.acceptTerms"
+          [attr.aria-invalid]="
+            form.controls.acceptTerms.invalid && form.controls.acceptTerms.touched ? true : null
+          "
+        />
+        I agree to the terms and privacy policy
+      </label>
+      @if (form.controls.acceptTerms.invalid && form.controls.acceptTerms.touched) {
+        <p class="terms__error">You must accept to continue.</p>
+      }
+    </div>
+
+    <app-button type="submit">Create account</app-button>
+  </form>
+
+  <p class="switch">Already have an account? <a routerLink="/login">Sign in</a></p>
+</app-card>

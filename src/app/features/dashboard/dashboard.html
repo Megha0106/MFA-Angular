@@ -1,0 +1,25 @@
+<h1>Welcome</h1>
+<app-alert variant="info">
+  Sample data for layout only. This page is not protected until authentication is integrated.
+</app-alert>
+
+<section class="tiles" aria-label="Summary">
+  @for (tile of tiles; track tile.label) {
+    <app-card>
+      <p class="tile__label">{{ tile.label }}</p>
+      <p class="tile__value">{{ tile.value }}</p>
+    </app-card>
+  }
+</section>
+
+<app-card>
+  <h2>Recent activity</h2>
+  <ul class="activity">
+    @for (item of activity; track item.title) {
+      <li class="activity__item">
+        <span>{{ item.title }}</span>
+        <span class="activity__when">{{ item.when }}</span>
+      </li>
+    }
+  </ul>
+</app-card>

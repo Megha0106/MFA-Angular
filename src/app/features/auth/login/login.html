@@ -1,0 +1,20 @@
+<app-card>
+  <h1>Sign in</h1>
+  <p class="muted">Continue with your Microsoft account. Multi-factor verification is handled there.</p>
+
+  <form [formGroup]="form" (ngSubmit)="submit()" novalidate>
+    <app-form-field
+      fieldId="login-email"
+      label="Email (optional)"
+      type="email"
+      inputMode="email"
+      autocomplete="username"
+      [control]="email"
+      [errorMessages]="{ email: 'Enter a valid email address.' }"
+    />
+
+    <app-button type="submit">Sign in with Microsoft</app-button>
+  </form>
+
+  <p class="switch">New here? <a routerLink="/register">Create an account</a></p>
+</app-card>
