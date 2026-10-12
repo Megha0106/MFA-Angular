@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 
-/** Centered shell shared by the register, login and MFA pages. */
+/** Centered shell shared by the register and login pages. */
 @Component({
   selector: 'app-auth-layout',
   imports: [RouterOutlet],

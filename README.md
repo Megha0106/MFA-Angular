@@ -63,7 +63,7 @@ at https://jwt.ms. The `amr` claim should include `"mfa"` (without MFA it shows 
 
 - `MsalGuard` runs in the browser, so it protects the UI only. Any backend API must validate the access token
   itself, and can check `amr` for `mfa` if MFA must be guaranteed.
-- The `register` and `mfa-verify` screens are not connected to Entra.
+- The `register` screen is not connected to Entra.
 
 ## Development server
 

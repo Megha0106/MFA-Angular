@@ -17,12 +17,6 @@ export const routes: Routes = [
         title: 'Sign in',
         loadComponent: () => import('./features/auth/login/login').then((m) => m.Login),
       },
-      {
-        path: 'mfa',
-        title: 'Verify code',
-        loadComponent: () =>
-          import('./features/auth/mfa-verify/mfa-verify').then((m) => m.MfaVerify),
-      },
     ],
   },
   {
